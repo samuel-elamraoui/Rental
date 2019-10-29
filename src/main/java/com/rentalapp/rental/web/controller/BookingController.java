@@ -1,7 +1,6 @@
 package com.rentalapp.rental.web.controller;
 
 import com.rentalapp.rental.model.Booking;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -9,9 +8,6 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class BookingController {
     private RestTemplate restTemplate = new RestTemplate();
-
-    @Value("${error.message}")
-    private String errorMessage;
 
     @RequestMapping(value = "/Bookings", method = RequestMethod.GET)
     public String bookingList() {
