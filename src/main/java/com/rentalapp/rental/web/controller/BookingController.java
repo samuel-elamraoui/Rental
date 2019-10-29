@@ -40,4 +40,6 @@ public class BookingController {
         restTemplate.delete("http://172.22.119.143:8082/Bookings"+id);
         return "redirect:/Bookings";
     }
+
+
 }
