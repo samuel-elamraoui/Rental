@@ -4,6 +4,8 @@ import com.rentalapp.rental.model.User;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
+
 @RestController
 public class UserController {
 
@@ -11,20 +13,20 @@ public class UserController {
 
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
-    public String ListUsers() {
-        restTemplate.getForObject("http://172.22.119.130:8080/users", User[].class);
-        return "Users";
+    public User[] ListUsers() {
+        User[] response = restTemplate.getForObject("http://172.22.119.130:8080/users",User[].class);
+        return response;
     }
 
     @RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
-    public String afficherUnUser(@PathVariable int id) {
-        restTemplate.getForObject(("http://172.22.119.130:8082/users"+id), User[].class);
-        return "Users/{id}";
+    public User afficherUnUser(@PathVariable int id) {
+        User user = restTemplate.getForObject(("http://172.22.119.130:8080/users/"+id), User.class);
+        return user;
     }
 
     @RequestMapping(value = {"/users/{id}"}, method = RequestMethod.DELETE)
     public String supprimerUser(@PathVariable int id){
-        restTemplate.delete("http://172.22.119.130/users"+id);
+        restTemplate.delete("http://172.22.119.130:8080/users/"+id);
         return "redirect:/users";
     }
 
