@@ -17,7 +17,7 @@ public class BookingController {
 
     @RequestMapping(value = "/Bookings/{id}", method = RequestMethod.GET)
     public Booking showBooking(@PathVariable int id) {
-        Booking booking = restTemplate.getForObject(("http://172.22.119.143:8082/Bookings"+id), Booking.class);
+        Booking booking = restTemplate.getForObject(("http://172.22.119.143:8082/Bookings/"+id), Booking.class);
         return booking;
     }
 
@@ -37,7 +37,7 @@ public class BookingController {
 
     @RequestMapping(value = {"/deleteBooking/{id}"}, method = RequestMethod.GET)
     public String deleteCar(@PathVariable int id){
-        restTemplate.delete("http://172.22.119.143:8082/Bookings"+id);
+        restTemplate.delete("http://172.22.119.143:8082/Bookings/"+id);
         return "redirect:/Bookings";
     }
 }

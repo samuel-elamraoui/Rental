@@ -10,7 +10,7 @@ public class Booking {
     private Date endrental;
     private int rentalfee;
 
-    public Booking(Date startrental, Date endrental, int rentalfee) {
+    public Booking() {
     }
 
     public int getId() {
