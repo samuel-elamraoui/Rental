@@ -15,18 +15,18 @@ public class BookingController {
 
     @RequestMapping(value = "/Bookings", method = RequestMethod.GET)
     public String bookingList() {
-        restTemplate.getForObject("http://172.22.119.143:8082/Bookings", Booking[].class);
+        restTemplate.getForObject("http://172.22.119.143:8082/Bookings/Cars", Booking[].class);
         return "Bookings";
     }
 
     @RequestMapping(value = "/Bookings/{id}", method = RequestMethod.GET)
     public String showBooking(@PathVariable int id) {
-        restTemplate.getForObject(("http://172.22.119.143:8082/Bookings/"+id), Booking[].class);
+        restTemplate.getForObject(("http://172.22.119.143:8082/Bookings/Cars"+id), Booking[].class);
         return "Booking/{id}";
     }
 
     @RequestMapping(value = {"/addBooking"}, method = RequestMethod.POST)
-    public String addBooking(@RequestBody Booking booking) {
+    public String addCar(@RequestBody Booking booking) {
 
         restTemplate.postForObject("http://172.22.119.143:8082/Bookings",booking,Booking[].class);
         return "addBooking";
@@ -35,7 +35,7 @@ public class BookingController {
     @RequestMapping(value = {"/addBooking"}, method = RequestMethod.PUT)
     public String updateBooking(@RequestBody Booking booking) {
 
-        restTemplate.postForObject("http://172.22.119.143:8082/Bookings", booking,Booking[].class);
+        restTemplate.postForObject("http://172.22.119.143:8082/Bookings:8081/Cars", booking,Booking[].class);
         return "addBooking";
     }
 
@@ -44,6 +44,4 @@ public class BookingController {
         restTemplate.delete("http://172.22.119.143:8082/Bookings"+id);
         return "redirect:/Bookings";
     }
-
-
 }
